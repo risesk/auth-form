@@ -1,0 +1,811 @@
+@font-face {
+    font-weight: 300;
+    font-family: Graphik;
+    font-style: normal;
+    src: url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Light-Web.woff2') format('woff2'),
+        url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Light-Web.woff') format('woff');
+}
+@font-face {
+    font-weight: 400;
+    font-family: Graphik;
+    font-style: normal;
+    src: url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Regular-Web.woff2') format('woff2'),
+        url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Regular-Web.woff') format('woff');
+}
+@font-face {
+    font-weight: 500;
+    font-family: Graphik;
+    font-style: normal;
+    src: url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Medium-Web.woff2') format('woff2'),
+        url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Medium-Web.woff') format('woff');
+}
+@font-face {
+    font-weight: 600;
+    font-family: Graphik;
+    font-style: normal;
+    src: url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Semibold-Web.woff2') format('woff2'),
+        url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Semibold-Web.woff') format('woff');
+}
+@font-face {
+    font-weight: 700;
+    font-family: Graphik;
+    font-style: normal;
+    src: url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Bold-Web.woff2') format('woff2'),
+        url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Bold-Web.woff') format('woff');
+}
+@font-face {
+    font-weight: 900;
+    font-family: Graphik;
+    font-style: normal;
+    src: url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Black-Web.woff2') format('woff2'),
+        url('//static1.megafon.ru/.blocks/fonts/graphik/MegaFonGraphikLC-Black-Web.woff') format('woff');
+}
+@font-face {
+    font-weight: normal;
+    font-family: megaicons;
+    font-style: normal;
+    src: url('//static1.megafon.ru/.blocks/fonts/mf/megaicons.eot');
+    src: url('//static1.megafon.ru/.blocks/fonts/mf/megaicons.eot?#iefix') format('embedded-opentype'),
+        url('//static1.megafon.ru/.blocks/fonts/mf/megaicons.woff') format('woff'),
+        url('//static1.megafon.ru/.blocks/fonts/mf/megaicons.ttf') format('truetype'),
+        url('//static1.megafon.ru/.blocks/fonts/mf/megaicons.svg#megaicons') format('svg');
+}
+
+.login-pf {
+    background: none;
+}
+
+.login-pf body {
+    font-family: Graphik, Arial, sans-serif;
+    color: #404D46;
+    background: none;
+    position: relative;
+    background-size: cover;
+    height: 100%;
+}
+
+.login-pf body:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    background: radial-gradient(79.55% 94.59% at 100% 0%, rgba(142, 81, 194, 0.15) 0%, rgba(142, 81, 194, 0) 100%), #FFFFFF;
+}
+
+.login-pf body .form-control {
+    height: 56px;
+}
+
+.login-pf-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0 80px;
+}
+
+@media (max-width: 768px) {
+    .login-pf-page {
+        padding: 0 16px;
+    }
+}
+
+.form-control {
+    background: #FFFFFF;
+    border: 2px solid #EDEDED;
+    box-sizing: border-box;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    font-size: 15px;
+    line-height: 24px;
+    color: #404D46;
+    transition: all 0.3s;
+
+    height: 56px;
+}
+
+.form-control:focus {
+    border-color: #000;
+    box-shadow: none;
+}
+
+.form-control:hover {
+    border-color: rgba(64, 77, 70, 0.25);
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+    font-style: normal;
+}
+
+.form-control:not(:placeholder-shown) {
+    padding: 24px 16px 8px;
+}
+
+.form-control:not(:placeholder-shown) + .control-label-wrapper {
+    opacity: 1;
+}
+
+.control-label-wrapper {
+    position: absolute;
+    left: 16px;
+    top: 6px;
+    transition: all 0.3s;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+}
+
+#kc-totp-login-form .form-group {
+    position: relative;
+    margin: 0;
+}
+
+#kc-totp-login-form .control-label {
+    padding: 0;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: normal;
+    color: rgba(51, 51, 51, 0.5);
+}
+
+.login-pf-settings a, .login-pf-settings label {
+  color: #004c23;
+}
+
+.login-pf-settings a:hover, .login-pf-settings a:focus {
+  color: #004c23 !important;
+}
+
+.login-pf-page .login-pf-header {
+    margin-bottom: 0px;
+}
+
+.login-pf-page .login-pf-header h1 {
+    max-width: 250px;
+    text-align: left;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.login-pf-page .login-pf-page-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 0;
+}
+
+@media (max-width: 480px) {
+    .login-pf-page .login-pf-page-footer {
+        flex-direction: column;
+        padding-bottom: 16px;
+    }
+}
+
+.login-pf-page .login-pf-page-footer-policy,
+.login-pf-page .login-pf-page-footer-copyright {
+    color: #404D46;
+    font-size: 12px;
+    line-height: 14px;
+
+    letter-spacing: 0.5px;
+}
+
+.login-pf-page .login-pf-page-footer-policy:hover {
+    color: #404D46;
+}
+
+.alert-error {
+    background-color: rgba(246, 36, 52, 0.2);
+    border-radius: 8px;
+
+    padding: 4px 8px 4px 36px;
+    margin-bottom: 16px;
+}
+
+.alert >.pficon {
+    font-size: 16px;
+    left: 10px;
+    top: 8px;
+    color: #F62434;
+}
+
+.kc-feedback-text {
+    font-size: 15px;
+    line-height: 24px;
+
+    color: #F62434;
+}
+
+#kc-locale ul {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    list-style: none;
+    right: 0;
+    top: 20px;
+    min-width: 100px;
+    padding: 2px 0;
+    border: solid 1px #bbb;
+}
+
+#kc-locale:hover ul {
+    display: block;
+    margin: 0;
+}
+
+#kc-locale ul li a {
+    display: block;
+    padding: 5px 14px;
+    color: #000 !important;
+    text-decoration: none;
+    line-height: 20px;
+}
+
+#kc-locale ul li a:hover {
+    color: #4d5258;
+    background-color: #d4edfa;
+}
+
+#kc-locale-dropdown a {
+    color: #4d5258;
+    background: 0 0;
+    padding: 0 15px 0 0;
+    font-weight: 300;
+}
+
+#kc-locale-dropdown a:hover {
+    text-decoration: none;
+}
+
+a#kc-current-locale-link {
+    display: block;
+    padding: 0 5px;
+}
+
+a#kc-current-locale-link::after {
+    content: "\2c5";
+    margin-left: 4px;
+}
+
+.login-pf .container {
+    padding-top: 40px;
+}
+
+.login-pf a:hover {
+    color: #0099d3;
+}
+
+#kc-logo {
+    width: 100%;
+}
+
+#kc-logo-wrapper {
+    background-image: url(../img/keycloak-logo-2.png);
+    background-repeat: no-repeat;
+    height: 63px;
+    width: 300px;
+    margin: 62px auto 0;
+}
+
+div.kc-logo-text {
+    background-image: url(../img/keycloak-logo-text.png);
+    background-repeat: no-repeat;
+    height: 63px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+div.kc-logo-text span {
+    display: none;
+}
+
+#kc-header {
+    color: #ededed;
+    overflow: visible;
+    white-space: nowrap;
+    margin: 0;
+    text-align: left;
+}
+
+#kc-header-wrapper {
+    padding: 36px 0;
+}
+
+#kc-page-title {
+    margin: 0 0 24px;
+}
+
+#kc-content {
+    width: 100%;
+}
+
+#kc-attempted-username{
+    margin: 0;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 400;
+
+    color: #404D46;
+}
+
+#kc-username{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    
+    min-height: 56px;
+    border-radius: 16px;
+    padding: 12px 12px 12px 16px;
+
+    background-color: #F6F6F6;
+}
+
+#reset-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all 0.3s;
+
+    background-color: #00B956;
+    color: white;
+}
+
+#reset-login:hover {
+    opacity: 0.7;
+}
+
+#kc-webauthn-settings-form{
+    padding-top:8px;
+}
+
+#kc-info {
+    padding-bottom: 200px;
+    margin-bottom: -200px;
+}
+
+#kc-info-wrapper {
+    font-size: 13px;
+}
+
+#kc-form-options span {
+    display: block;
+}
+
+#kc-form-options .checkbox {
+    margin-top: 0;
+    color: #72767b;
+}
+
+#kc-terms-text {
+    margin-bottom: 20px;
+}
+
+#kc-registration {
+    margin-bottom: 15px;
+}
+
+/* TOTP */
+
+.subtitle {
+    text-align: right;
+    margin-top: 30px;
+    color: #909090;
+}
+
+.required {
+    color: #CB2915;
+}
+
+ol#kc-totp-settings {
+    margin: 0;
+    padding-left: 20px;
+}
+
+ul#kc-totp-supported-apps {
+  margin-bottom: 10px;
+}
+
+#kc-totp-secret-qr-code {
+    max-width:150px;
+    max-height:150px;
+}
+
+#kc-totp-secret-key {
+    background-color: #fff;
+    color: #333333;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+/* OAuth */
+
+#kc-oauth h3 {
+    margin-top: 0;
+}
+
+#kc-oauth ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#kc-oauth ul li {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+#kc-oauth ul li:first-of-type {
+    border-top: 0;
+}
+
+#kc-oauth .kc-role {
+    display: inline-block;
+    width: 50%;
+}
+
+/* Code */
+#kc-code textarea {
+    width: 100%;
+    height: 8em;
+}
+
+/* Social */
+
+#kc-social-providers ul {
+    padding: 0;
+}
+
+#kc-social-providers li {
+    display: block;
+}
+
+#kc-social-providers li:first-of-type {
+    margin-top: 0;
+}
+
+.kc-login-tooltip{
+    position:relative;
+    display: inline-block;
+}
+
+.kc-login-tooltip .kc-tooltip-text{
+    top:-3px;
+    left:160%;
+    background-color: black;
+    visibility: hidden;
+    color: #fff;
+
+    min-width:130px;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow:0 1px 8px rgba(0,0,0,0.6);
+    padding: 5px;
+
+    position: absolute;
+    opacity:0;
+    transition:opacity 0.5s;
+}
+
+/* Show tooltip */
+.kc-login-tooltip:hover .kc-tooltip-text {
+    visibility: visible;
+    opacity:0.7;
+}
+
+/* Arrow for tooltip */
+.kc-login-tooltip .kc-tooltip-text::after {
+    content: " ";
+    position: absolute;
+    top: 15px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.zocial,
+a.zocial  {
+    width: 100%;
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: none;
+    border: 0;
+    background: #f5f5f5;
+    color: #72767b;
+    border-radius: 0;
+    white-space: normal;
+}
+.zocial:before {
+  border-right: 0;
+  margin-right: 0;
+}
+.zocial span:before {
+    padding: 7px 10px;
+    font-size: 14px;
+}
+.zocial:hover {
+    background: #ededed !important;
+}
+
+.zocial.facebook,
+.zocial.github,
+.zocial.google,
+.zocial.microsoft,
+.zocial.stackoverflow,
+.zocial.linkedin,
+.zocial.twitter {
+    background-image: none;
+    border: 0;
+
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* Copy of zocial windows classes to be used for microsoft's social provider button */
+.zocial.microsoft:before{ content: "\f15d"; }
+.zocial.stackoverflow:before{ color: inherit; }
+
+
+@media (min-width: 768px) {
+    #kc-container-wrapper {
+        position: absolute;
+        width: 100%;
+    }
+
+    .login-pf .container {
+        padding-right: 80px;
+    }
+
+    #kc-locale {
+        position: relative;
+        text-align: right;
+        z-index: 9999;
+    }
+}
+
+@media (max-width: 767px) {
+    #kc-header {
+        margin: 0;
+        text-align: left;
+    }
+
+    #kc-header-wrapper {
+        padding: 26px 0;
+    }
+
+    div.kc-logo-text {
+        margin: 0;
+        width: 150px;
+        height: 32px;
+        background-size: 100%;
+    }
+
+    #kc-form {
+        float: none;
+    }
+
+    #kc-info-wrapper {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 15px;
+        padding-top: 15px;
+        padding-left: 0px;
+        padding-right: 15px;
+    }
+
+    #kc-social-providers li {
+        display: block;
+        margin-right: 5px;
+    }
+
+    .login-pf .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    #kc-locale {
+        position: absolute;
+        width: 200px;
+        top: 20px;
+        right: 20px;
+        text-align: right;
+        z-index: 9999;
+    }
+
+    #kc-logo-wrapper {
+        background-size: 100px 21px;
+        height: 21px;
+        width: 100px;
+        margin: 20px 0 0 20px;
+    }
+
+}
+
+@media (min-height: 646px) {
+    #kc-container-wrapper {
+        bottom: 12%;
+    }
+}
+
+@media (max-height: 645px) {
+    #kc-container-wrapper {
+        padding-top: 50px;
+        top: 20%;
+    }
+}
+
+.card-pf form.form-actions .btn {
+    float: right;
+    margin-left: 10px;
+}
+
+#kc-form-buttons {
+  margin-top: 40px;
+}
+
+.kc-header_logo {
+  width: 192px;
+}
+
+@media (max-width: 768px) {
+    .kc-header_logo {
+        width: 133px
+    }
+}
+
+.login-pf-page .login-pf-brand {
+  margin-top: 20px;
+  max-width: 360px;
+  width: 40%;
+}
+
+.login-pf-page .card-pf {
+  background: #fff;
+  border-radius: 32px;
+  margin: 0 auto;
+  padding: 40px;
+  max-width: 360px;
+  width: 100%;
+  border-top: 0;
+  box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.08);
+}
+
+.login-pf-page .card-pf p {
+    margin: 0;
+}
+
+.card-pf-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/*tablet*/
+@media (max-width: 767px) {
+    .login-pf-page .card-pf{
+        padding: 24px;
+    }
+}
+
+.login-pf-page .login-pf-signup {
+  font-size: 15px;
+  color: #72767b;
+}
+#kc-content-wrapper .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .login-pf-page .login-pf-social-section:first-of-type {
+    padding-right: 39px;
+    border-right: 1px solid #d1d1d1;
+    margin-right: -1px;
+  }
+  .login-pf-page .login-pf-social-section:last-of-type {
+    padding-left: 40px;
+  }
+  .login-pf-page .login-pf-social-section .login-pf-social-link:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.login-pf-page .login-pf-social-link {
+  margin-bottom: 25px;
+}
+.login-pf-page .login-pf-social-link a {
+  padding: 2px 0;
+}
+
+.login-pf-page.login-pf-page-accounts {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-pf-page .btn-primary {
+    margin-top: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 56px;
+    padding: 0 32px;
+    border: none;
+    border-radius: 16px;
+
+    color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+
+    background-color: transparent;
+    outline: none !important;
+    cursor: pointer;
+
+    transition: 0.2s;
+    background: linear-gradient(91.85deg, #9824AB 0%, #516CB0 51.19%, #0FDE65 100%);
+    box-shadow: 0 12px 20px rgba(70, 85, 124, 0.25);
+}
+
+.login-pf-page .btn-primary:hover {
+    color: #FFFFFF;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), linear-gradient(91.85deg, #9824AB 0%, #516CB0 51.19%, #0FDE65 100%);;
+    box-shadow: 0 12px 20px rgba(70, 85, 124, 0.25);
+}
+
+.login-pf-page .btn-primary::active {
+    color: #FFFFFF;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(91.85deg, #9824AB 0%, #516CB0 51.19%, #0FDE65 100%);;
+    box-shadow: 0 12px 20px rgba(70, 85, 124, 0.25);
+}
+
+.login-pf-page .btn-primary_disabled,
+.login-pf-page .btn-primary_disabled:hover,
+.login-pf-page .btn-primary_disabled:active {
+    background: #EDEDED;
+    color: rgba(51, 51, 51, 0.5);
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.login-pf-page .list-view-pf .list-group-item {
+    border-bottom: 1px solid #ededed;
+}
+
+.login-pf-page .list-view-pf-description {
+    width: 100%;
+}
+
+#kc-form-login div.form-group:last-of-type,
+#kc-register-form div.form-group:last-of-type,
+#kc-update-profile-form div.form-group:last-of-type,
+.login-pf-header div.form-group:last-of-type {
+    margin-bottom: 0px;
+}
+
+#kc-back {
+    margin-top: 5px;
+}
+
+form#kc-select-back-form div.login-pf-social-section {
+    padding-left: 0px;
+    border-left: 0px;
+}
