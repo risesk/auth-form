@@ -85,17 +85,41 @@
 		replaceElements(msisdnInputElement, formGroupElement);
 		msisdnInputElement.setAttribute('type', 'tel');
 		msisdnInputElement.setAttribute('inputmode', 'tel');
+		msisdnInputElement.setAttribute('autocomplete', 'tel');
 
-		msisdnInputElement.addEventListener('paste', function(event) {
-			var pasteData = (event.clipboardData || window.clipboardData).getData('text');
+		msisdnInputElement.addEventListener('input', function(e) {
+			if (e instanceof InputEvent) {
+				var pasteInputData = e.data;
+				if (pasteInputData && pasteInputData.length > 1) {
+					e.preventDefault();
+					
+					var cleanedMsisdn = cleanMsisdn(pasteInputData);
+					msisdnMask.unmaskedValue = cleanedMsisdn;
+				}
+			} else if (e instanceof Event) {
+				var pasteData = String(e.target.value);
+				if (pasteData && pasteData.length > 1) {
+					e.preventDefault();
+
+					var cleanedMsisdn = cleanMsisdn(pasteData);
+					msisdnMask.unmaskedValue = cleanedMsisdn;
+				}
+			}
+		});
+		msisdnInputElement.addEventListener('paste', function(e) {
+			e.preventDefault();
+
+			var clipboardData = (e.clipboardData || window.clipboardData)
+			var pasteData = clipboardData.getData('text');
 			var cleanedMsisdn = cleanMsisdn(pasteData);
 
 			if (cleanedMsisdn) {
-				msisdnInputElement.value = cleanedMsisdn;
+				msisdnMask.unmaskedValue = cleanedMsisdn;
 			}
 		});
 
 		var msisdnMask = IMask(msisdnInputElement, msisdnMaskOptions);
+
 		msisdnMask.on("accept", function () {
 			if (msisdnMask.unmaskedValue.length === msisdnValidLength) {
 				buttonElement.classList.remove(buttonDisabledClassname);
@@ -130,6 +154,7 @@
 		otpInputElement.setAttribute('inputmode', 'numeric');
 
 		var otpMask =  IMask(otpInputElement, otpMaskOptions);
+
 		otpMask.on("accept", function () {
 			if (otpMask.unmaskedValue.length > 0) {
 				buttonElement.classList.remove(buttonDisabledClassname);
